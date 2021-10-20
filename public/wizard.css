@@ -1,0 +1,26 @@
+video {
+  object-fit: cover;
+  width: 99vw;
+  height: 100vh;
+  /*
+  position: fixed;
+  top: 0;
+  left: 0; */
+}
+.viewport-header{
+  position: absolute;
+  width: 50%;
+  top:10%;
+  left:10%;
+}
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 14px;
+  width: 80%;
+  border-radius: 25px;
+  box-shadow:0 0 15px 4px rgb(252, 252, 181)
+
+}
+.add{
+  margin-top: 30px;
+}

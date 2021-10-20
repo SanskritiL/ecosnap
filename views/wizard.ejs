@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+ <link rel="stylesheet" href="/wizard.css">
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="img/wiz.mp4" type="video/mp4">
+      </video>
+      
+    <div class="login viewport-header">
+
+        <h2>Set Activity</h2>
+  <form method="post" action="/wizard">
+    <div class="user-box">
+      <input class="text" type="text" name="log" required="" placeholder="Log what you did today">
+
+    </div>
+    <div class="user-box">
+      <input class="text" type="text" name="val" required="" placeholder="Enter Value">
+    </div>
+
+    <div>
+        <label class="radio">
+            <span class="radio__input">
+              <input type="radio" name="radio" />
+              <span class="radio__control"></span>
+            </span>
+            <span class="radio__label">Reduce</span>
+          </label>
+          
+          <label class="radio">
+            <span class="radio__input">
+              <input type="radio" name="radio" />
+              <span class="radio__control"></span>
+            </span>
+            <span class="radio__label">Reuse</span>
+          </label>
+          <label class="radio">
+            <span class="radio__input">
+              <input type="radio" name="radio" />
+              <span class="radio__control"></span>
+            </span>
+            <span class="radio__label">Ocean</span>
+          </label>
+          <label class="radio">
+            <span class="radio__input">
+              <input type="radio" name="radio" />
+              <span class="radio__control"></span>
+            </span>
+            <span class="radio__label">Carbon</span>
+          </label>
+    </div>
+    <div class="add">
+        <input type="submit" value="Add">
+    </div>
+   
+  </form>
+       </div>
+    </body>
+        </html>
+        
+
+
+
+

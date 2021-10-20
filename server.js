@@ -5,6 +5,25 @@ const passport = require('passport');
 const SnapchatStrategy = require('passport-snapchat').Strategy;
 
 let config = {};
+let items = [
+  {activity: "Bought second hand Jeans", value: "50", category: "Reuse"},
+  {activity: "Used own coffee cup/straw", value: "10", category: "Reuse"},
+  {activity: "Walked to CVS", value: "15", category: "Carbon"},
+  {activity: "Flight to TX", value: "-100", category: "Carbon"},
+  {activity: "Planted a tree", value: "80", category: "Carbon"},
+  {activity: "Took public transportation", value: "30", category: "Carbon"},
+  {activity: "Voted on Ocean Issues", value: "15", category: "Ocean"},
+  {activity: "Didn't buy trending tiktok pants", value: "20", category: "Reduce"},
+  {activity: "Avoided plastic packaged Produce", value: "12", category: "Ocean"},
+]
+let totalKarma = 0;
+
+for(let i =0 ;i <items.length;i++){
+  totalKarma += parseInt(items[i].value);
+}
+console.log(totalKarma)
+
+
 try {
   fs.statSync(path.join(__dirname, './config'))
   config = require('./config');
@@ -56,10 +75,13 @@ passport.deserializeUser(function(obj, cb) {
 
 // Create a new Express application.
 var app = express();
+app.use(express.static('public')); 
 
 // Configure view engine to render EJS templates.
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+
+
 
 // Use application-level middleware for common functionality, including
 // logging, parsing, and session handling.
@@ -72,6 +94,7 @@ app.use(require('express-session')({
   saveUninitialized: true,
 }));
 
+
 // Initialize Passport and restore authorization state, if any, from the
 // session.
 app.use(passport.initialize());
@@ -81,7 +104,7 @@ app.use(passport.session());
 // Define routes.
 app.get('/',
   function(req, res) {
-    res.render('home', { user: req.user });
+    res.render('home', { user: req.user,activity: items, totalItems: totalKarma });
   });
 
 app.get('/login',
@@ -92,6 +115,8 @@ app.get('/login',
 app.get('/login/snapchat',
   passport.authenticate('snapchat'));
 
+
+
 app.get('/login/snapchat/callback',
   passport.authenticate('snapchat', { failureRedirect: '/login' }),
   function(req, res) {
@@ -100,10 +125,36 @@ app.get('/login/snapchat/callback',
 
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
+
   function(req, res){
-    res.render('profile', { user: req.user });
+    res.render('profile', { user: req.user, activity: items, totalItems: totalKarma });
+    console.log(totalKarma)
   });
+
+
+  app.get('/wizard',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('wizard');
+  });
+
+  app.post('/wizard', require('connect-ensure-login').ensureLoggedIn(),function(request, response){
+
+    console.log(request.body.log);
+    console.log(request.body.val);
+    items.push({activity: request.body.log,value: request.body.val , category:"Carbon"})
+    totalKarma+= request.body.val
+    response.redirect('/profile')
+    
+    });
+    
+
 
 app.listen(3000, () => {
   console.log('App listening on port 3000...');
 });
+
+
+
+
+

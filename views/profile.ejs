@@ -3,6 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
+    
     <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -11,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
- 
+
   <div class="sidebar">
     <div class="logo-details">
       
@@ -46,13 +47,16 @@
             <span class="links_name">Activity</span>
           </a>
         </li>
+        <% if (totalItems && totalItems >= 1000) { %>
         <li>
           <a href="#">
-            <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Share</span>
+            <div class="snapchat-creative-kit-share share-button share-button--grid"
+            data-share-url='https://301d-75-134-76-227.ngrok.io/img/badge.png'>  
+          </div>
+            <span class="links_name">Share Badge</span>
           </a>
         </li>
-       
+       <% } %>
       
         <li class="log_out">
           <a href="#">
@@ -67,10 +71,9 @@
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
         <span class="dashboard">Ecosnap</span>
-        <div class="snapchat-creative-kit-share share-button share-button--grid">mew</div>
+       
 
-     
-
+    
       </div>
       <div class="search-box">
         <input type="text" placeholder="Search...">
@@ -94,7 +97,7 @@
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Reduce</div>
-            <div class="number">386</div>
+            <div class="number">286</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
               <span class="text">Up from yesterday</span>
@@ -105,7 +108,7 @@
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Reuse</div>
-            <div class="number">1896</div>
+            <div class="number">70</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
               <span class="text">Up from yesterday</span>
@@ -116,7 +119,7 @@
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Ocean</div>
-            <div class="number">200</div>
+            <div class="number">100</div>
             <div class="indicator">
               <i class='bx bx-up-arrow-alt'></i>
               <span class="text">Up from yesterday</span>
@@ -127,7 +130,7 @@
         <div class="box">
           <div class="right-side">
             <div class="box-topic">Carbon</div>
-            <div class="number">1000</div>
+            <div class="number">120</div>
             <div class="indicator">
               <i class='bx bx-down-arrow-alt down'></i>
               <span class="text">Down From Today</span>
@@ -248,8 +251,16 @@
 
 </body>
 </html>
-
-
+<script>
+/* Load the SDK asynchronously */
+(function (d, s, id) {
+var js, sjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "https://sdk.snapkit.com/js/v1/create.js";
+sjs.parentNode.insertBefore(js, sjs);
+}(document, 'script', 'snapkit-creative-kit-sdk'));
+</script>
 
 
 <!-- <p>

@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const passport = require('passport');
+
 const SnapchatStrategy = require('passport-snapchat').Strategy;
 
 let config = {};
@@ -39,7 +40,7 @@ try {
 passport.use(new SnapchatStrategy({
     clientID: config.CLIENT_ID || process.env.CLIENT_ID,
     clientSecret: config.CLIENT_SECRET || process.env.CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/login/snapchat/callback',
+    callbackURL: 'https://301d-75-134-76-227.ngrok.io/login/snapchat/callback',
     profileFields: ['id', 'displayName', 'bitmoji'],
     scope: ['user.display_name', 'user.bitmoji.avatar'],
     pkce: true,
@@ -120,7 +121,7 @@ app.get('/login/snapchat',
 app.get('/login/snapchat/callback',
   passport.authenticate('snapchat', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/profile');
   });
 
 app.get('/profile',

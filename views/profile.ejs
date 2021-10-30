@@ -1,257 +1,212 @@
 <!DOCTYPE html>
-<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    
-    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="dashboard.css">
- 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <head>
+      <meta charset="UTF-8">
+      <!-- Boxicons CDN Link -->
+      <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+      <link rel="stylesheet" href="dashboard.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
-<body>
-
-  <div class="sidebar">
-    <div class="logo-details">
-      
-      <% if (user.bitmoji.avatarUrl) { %>
-        <img src="<%= user.bitmoji.avatarUrl %>&scale=2" height="80" width="80" />
-      <% } %>
-      <span class="logo_name"> <%= user.displayName %> </span>
-
-    </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#" class="active">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Ecosnap</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-happy-beaming' ></i>
-            <span class="links_name">Karma</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-face' ></i>
-            <span class="links_name">View Friends</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-walk' ></i>
-            <span class="links_name">Activity</span>
-          </a>
-        </li>
-        <% if (totalItems && totalItems >= 1000) { %>
-        <li>
-          <a href="#">
-            <div class="snapchat-creative-kit-share share-button share-button--grid"
-            data-share-url='https://301d-75-134-76-227.ngrok.io/img/badge.png'>  
-          </div>
-            <span class="links_name">Share Badge</span>
-          </a>
-        </li>
-       <% } %>
-      
-        <li class="log_out">
-          <a href="#">
-            <i class='bx bx-log-out'></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-  </div>
-  <section class="home-section">
-    <nav>
-      <div class="sidebar-button">
-        <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard">Ecosnap</span>
-       
-
-    
-      </div>
-      <div class="search-box">
-        <input type="text" placeholder="Search...">
-        <i class='bx bx-search' ></i>
-      </div>
-      <div class="profile-details">
-        <!--<img src="images/profile.jpg" alt="">-->
-        <span class="admin_name">Sanskriti Lamsal</span>
-        <i class='bx bx-chevron-down' ></i>
-      </div>
-    </nav>
-    <% if (totalItems && totalItems >= 1000) { %>
-      <div id="hideMe">
-      <video autoplay muted loop id="vid" height="800" width="1000">
-        <source src="img/confet.mp4" type="video/mp4" >
-        </video>
-    </div>
-    <% } %>
-    <div class="home-content">
-      <div class="overview-boxes">
-        <div class="box">
-          <div class="right-side">
-            <div class="box-topic">Reduce</div>
-            <div class="number">286</div>
-            <div class="indicator">
-              <i class='bx bx-up-arrow-alt'></i>
-              <span class="text">Up from yesterday</span>
-            </div>
-          </div>
-          <i class='bx bxs-hot cart'></i>
-        </div>
-        <div class="box">
-          <div class="right-side">
-            <div class="box-topic">Reuse</div>
-            <div class="number">70</div>
-            <div class="indicator">
-              <i class='bx bx-up-arrow-alt'></i>
-              <span class="text">Up from yesterday</span>
-            </div>
-          </div>
-          <i class='bx bxs-shopping-bag-alt cart two' ></i>
-        </div>
-        <div class="box">
-          <div class="right-side">
-            <div class="box-topic">Ocean</div>
-            <div class="number">100</div>
-            <div class="indicator">
-              <i class='bx bx-up-arrow-alt'></i>
-              <span class="text">Up from yesterday</span>
-            </div>
-          </div>
-          <i class='bx bx-water cart three' ></i>
-        </div>
-        <div class="box">
-          <div class="right-side">
-            <div class="box-topic">Carbon</div>
-            <div class="number">120</div>
-            <div class="indicator">
-              <i class='bx bx-down-arrow-alt down'></i>
-              <span class="text">Down From Today</span>
-            </div>
-          </div>
-          <i class='bx bxs-car cart four' ></i>
-        </div>
-      </div>
-
-      <div class="sales-boxes">
-        <div class="recent-sales box">
-          <div class="title">Recent Activity</div>
-          <div class="sales-details">
-            <ul class="details">
-              <li class="topic">Activity</li>
-              <% for(let i = 0; i < activity.length; i++){ %>
-                   <li><a href="#"></a><%= activity[i].activity%></a></li>
-              <% } %>
-            <!-- <li class="topic">Activity</li>
-            <li><a href="#">Bought second hand Jeans</a></li>
-            <li><a href="#">Used own coffee cup/straw</a></li>
-            <li><a href="#">Walked to CVS</a></li>
-            <li><a href="#">Flight to TX</a></li>
-            <li><a href="#">Planted a tree</a></li>
-            <li><a href="#">Took public transportation</a></li>
-            <li><a href="#">Voted on Ocean Issues</a></li>
-            <li><a href="#">Didn't buy trending tiktok pants</a></li>
-             <li><a href="#">Avoided plastic packaged Produce</a></li> -->
-          </ul>
-          <ul class="details category">
-            <li class="topic">Category</li>
-            <% for(let i = 0; i < activity.length; i++){ %>
-              <li class="<%= activity[i].category %>" ><a href="#"></a><%= activity[i].category%></a></li>
-             <% } %>
-            <!-- <li class="topic">Category</li>
-            <li class="reuse">Reuse</a></li>
-            <li class="reuse">Reuse</a></li>
-            <li class="carbon">Carbon</a></li>
-            <li class="carbon">Carbon</a></li>
-            <li class="carbon">Carbon</a></li>
-            <li class="carbon">Carbon</a></li>
-            <li class="ocean">Ocean</a></li>
-            <li class="reduce">Reduce</a></li>
-            <li class="ocean">Ocean</a></li> -->
-          </ul>
-          <ul class="details">
-            <li class="topic">Total</li>
-            <% for(let i = 0; i < activity.length; i++){ %>
-              <li><a href="#"></a><%= activity[i].value%></a></li>
+   <body>
+      <div class="sidebar">
+         <div class="user-details">
+            <% if (user.bitmoji.avatarUrl) { %>
+            <img src="<%= user.bitmoji.avatarUrl %>&scale=2" height="80" width="80" />
             <% } %>
-            <!-- <li><a href="#">50</a></li>
-            <li><a href="#">10</a></li>
-            <li><a href="#">15</a></li>
-            <li><a href="#">-100</a></li>
-            <li><a href="#">80</a></li>
-            <li><a href="#">30</a></li>
-            <li><a href="#">15</a></li>
-             <li><a href="#">20</a></li>
-             <li><a href="#">12</a></li> -->
-          </ul>
-          </div>
-            <div class="button">
-              <a href="/wizard">Add</a>
-            </div>
-         
-        </div>
-        <div class="top-sales box">
-          <div class="title">Friends with Karma</div>
-          <ul class="top-sales-details">
+            <span class="username"> <%= user.displayName %> </span>
+         </div>
+         <ul class="nav-links">
             <li>
-            <a href="#">
-              <!--<img src="images/sunglasses.jpg" alt="">-->
-              <i class='bx bx-crown'></i>
-              <span class="product"> Aishwant Ghimire</span>
-            </a>
-            <span class="price">$1107</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class='bx bxs-ghost'></i>
-              <span class="product"> Ebrima Komma </span>
-            </a>
-            <span class="price">$767</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class='bx bxs-ghost'></i>
-              <span class="product"> Ronish Shrestha </span>
-            </a>
-            <span class="price">$234</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class='bx bxs-ghost'></i>
-              <span class="product"> Prativa Pandey </span>
-            </a>
-            <span class="price">$112</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class='bx bxs-ghost'></i>
-              <span class="product"> Sushil Koirala </span>
-            </a>
-            <span class="price">$70</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class='bx bxs-ghost'></i>
-              <span class="product">Smriti Lamsal</span>
-            </a>
-            <span class="price">$15</span>
-          </ul>
-        </div>
+               <a href="#" class="active">
+               <i class='bx bx-grid-alt' ></i>
+               <span class="links_name">Ecosnap</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+               <span class="links_name"> <span class="crown">👑 </span><%= totalItems %>  Karma</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+               <i class='bx bx-face' ></i>
+               <span class="links_name">View Friends</span>
+               </a>
+            </li>
+            <li>
+               <a href="#">
+               <i class='bx bx-walk' ></i>
+               <span class="links_name">Activity</span>
+               </a>
+            </li>
+            <% if (totalItems && totalItems >= 100) { %>
+            <li>
+               <a href="#">
+                  <div class="snapchat-creative-kit-share share-button share-button--grid"
+                     data-share-url='https://f6b0-75-134-76-227.ngrok.io/img/badge.png'>  
+                  </div>
+                  <span class="links_name">Share Badge</span>
+               </a>
+            </li>
+            <% } %>
+            <li class="log_out">
+               <a href="#">
+               <i class='bx bx-log-out'></i>
+               <span class="links_name">Log out</span>
+               </a>
+            </li>
+         </ul>
       </div>
-    </div>
-  </section>
+      <section class="home-section">
+         <nav>
+            <div class="sidebar-button">
+               <i class='bx bx-menu sidebarBtn'></i>
+               <span class="dashboard">Ecosnap</span>
+            </div>
+            <div class="search-box">
+               <input type="text" placeholder="Search...">
+               <i class='bx bx-search' ></i>
+            </div>
+            <div class="profile-details">
+               <span class="admin_name">Sanskriti Lamsal</span>
+               <i class='bx bx-chevron-down' ></i>
+            </div>
+         </nav>
+         <% if (totalItems && totalItems >= 100) { %>
+         <div id="hideMe">
+            <video autoplay muted loop id="vid" height="800" width="1000">
+               <source src="img/confet.mp4" type="video/mp4" >
+            </video>
+         </div>
+         <% } %>
+         <div class="home-content">
+            <div class="overview-boxes">
+               <div class="box">
+                  <div class="right-side">
+                     <div class="box-topic">Reduce</div>
+                     <div class="number">20</div>
+                     <div class="indicator">
+                        <i class='bx bx-up-arrow-alt'></i>
+                        <span class="text">Up from last week</span>
+                     </div>
+                  </div>
+                  <i class='bx bxl-less cart'></i>
+               </div>
+               <div class="box">
+                  <div class="right-side">
+                     <div class="box-topic">Reuse</div>
+                     <div class="number">30</div>
+                     <div class="indicator">
+                        <i class='bx bx-up-arrow-alt'></i>
+                        <span class="text">Up from last week</span>
+                     </div>
+                  </div>
+                  <i class='bx bxs-shopping-bag-alt cart two' ></i>
+               </div>
+               <div class="box">
+                  <div class="right-side">
+                     <div class="box-topic">Ocean</div>
+                     <div class="number">23</div>
+                     <div class="indicator">
+                        <i class='bx bx-up-arrow-alt'></i>
+                        <span class="text">Up from last week</span>
+                     </div>
+                  </div>
+                  <i class='bx bx-water cart three' ></i>
+               </div>
+               <div class="box">
+                  <div class="right-side">
+                     <div class="box-topic">Carbon</div>
+                     <div class="number">10</div>
+                     <div class="indicator">
+                        <i class='bx bx-down-arrow-alt down'></i>
+                        <span class="text">Down From last week</span>
+                     </div>
+                  </div>
+                  <i class='bx bxs-car cart four' ></i>
+               </div>
+            </div>
+            <div class="sales-boxes">
+               <div class="recent-sales box">
+                  <% if (totalItems && totalItems < 100) { %>
+                    <h6 class="note">You're <%= (100-totalItems) %> points away from next reward</h6>
+                  <% } %>
 
-
-</body>
+                  <div class="title">Recent Activity</div>
+                  <div class="sales-details">
+                     <ul class="details">
+                        <li class="topic">Activity</li>
+                        <% for(let i = 0; i < activity.length; i++){ %>
+                        <li><a href="#"></a><%= activity[i].activity%></a></li>
+                        <% } %>
+                     </ul>
+                     <ul class="details category">
+                        <li class="topic">Category</li>
+                        <% for(let i = 0; i < activity.length; i++){ %>
+                        <li class="<%= activity[i].category %>" ><a href="#"></a><%= activity[i].category%></a></li>
+                        <% } %>
+                     </ul>
+                     <ul class="details">
+                        <li class="topic">Total</li>
+                        <% for(let i = 0; i < activity.length; i++){ %>
+                        <li><a href="#"></a><%= activity[i].value%></a></li>
+                        <% } %>
+                     </ul>
+                  </div>
+                  <div class="button">
+                     <a href="/wizard">Add</a>
+                  </div>
+               </div>
+               <div class="top-sales box">
+                  <div class="title">Friends with Karma</div>
+                  <ul class="top-sales-details">
+                     <li>
+                        <a href="#">
+                           <!--<img src="images/sunglasses.jpg" alt="">-->
+                           <i class='bx bxl-snapchat bx-tada bx-flip-horizontal' ></i>                           <span class="friends"> Aishwant Ghimire</span>
+                        </a>
+                        <span class="points">132</span>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <i class='bx bxl-snapchat bx-tada bx-flip-horizontal' ></i>                        <span class="friends"> Ebrima Komma </span>
+                        </a>
+                        <span class="points">94</span>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <i class='bx bxl-snapchat bx-tada bx-flip-horizontal' ></i>                        <span class="friends"> Ronish Shrestha </span>
+                        </a>
+                        <span class="points">73</span>
+                     </li>
+                     <li>
+                        <a href="#">
+                           <i class='bx bxl-snapchat bx-tada bx-flip-horizontal' ></i>                        <span class="friends"> Prativa Pandey </span>
+                        </a>
+                        <span class="points">53</span>
+                     </li>
+                     <li>
+                        <a href="#">
+                        <i class='bx bxs-ghost'></i>
+                        <span class="friends"> Sushil Koirala </span>
+                        </a>
+                        <span class="points">13</span>
+                     </li>
+                     <li>
+                        <a href="#">
+                        <i class='bx bxs-ghost'></i>
+                        <span class="friends">Smriti Lamsal</span>
+                        </a>
+                        <span class="points">9</span>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </section>
+   </body>
 </html>
 <script>
+
 /* Load the SDK asynchronously */
 (function (d, s, id) {
 var js, sjs = d.getElementsByTagName(s)[0];
@@ -261,15 +216,3 @@ js.src = "https://sdk.snapkit.com/js/v1/create.js";
 sjs.parentNode.insertBefore(js, sjs);
 }(document, 'script', 'snapkit-creative-kit-sdk'));
 </script>
-
-
-<!-- <p>
-  <strong>ID:</strong> <%= user.id %><br/>
-  <strong>Name:</strong> <%= user.displayName %><br/>
-  <% if (user.bitmoji.avatarUrl) { %>
-    <strong>BITMOJI</strong><br/>
-    <i>Avatar ID:</i> <%= user.bitmoji.avatarId %><br/>
-    <i>Avatar</i><br/>
-    <img src="<%= user.bitmoji.avatarUrl %>&scale=2" height="140" width="140" />
-  <% } %>
-</p> -->

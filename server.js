@@ -7,15 +7,14 @@ const SnapchatStrategy = require('passport-snapchat').Strategy;
 
 let config = {};
 let items = [
-  {activity: "Bought second hand Jeans", value: "50", category: "Reuse"},
-  {activity: "Used own coffee cup/straw", value: "10", category: "Reuse"},
-  {activity: "Walked to CVS", value: "15", category: "Carbon"},
-  {activity: "Flight to TX", value: "-100", category: "Carbon"},
-  {activity: "Planted a tree", value: "80", category: "Carbon"},
-  {activity: "Took public transportation", value: "30", category: "Carbon"},
-  {activity: "Voted on Ocean Issues", value: "15", category: "Ocean"},
+  {activity: "Bought second hand Jeans", value: "15", category: "Reuse"},
+  {activity: "Used own coffee cup/straw", value: "15", category: "Reuse"},
+  {activity: "Flight to TX", value: "-20", category: "Carbon"},
+  {activity: "Planted a tree", value: "15", category: "Carbon"},
+  {activity: "Took public transportation", value: "15", category: "Carbon"},
   {activity: "Didn't buy trending tiktok pants", value: "20", category: "Reduce"},
-  {activity: "Avoided plastic packaged Produce", value: "12", category: "Ocean"},
+  {activity: "Avoided plastic packaged produce", value: "8", category: "Ocean"},
+  {activity: "Made my own shea butter lotion", value: "15", category: "Chemical"},
 ]
 let totalKarma = 0;
 
@@ -40,7 +39,7 @@ try {
 passport.use(new SnapchatStrategy({
     clientID: config.CLIENT_ID || process.env.CLIENT_ID,
     clientSecret: config.CLIENT_SECRET || process.env.CLIENT_SECRET,
-    callbackURL: 'https://301d-75-134-76-227.ngrok.io/login/snapchat/callback',
+    callbackURL: 'https://f6b0-75-134-76-227.ngrok.io/login/snapchat/callback',
     profileFields: ['id', 'displayName', 'bitmoji'],
     scope: ['user.display_name', 'user.bitmoji.avatar'],
     pkce: true,
@@ -136,15 +135,20 @@ app.get('/profile',
   app.get('/wizard',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('wizard');
+    res.render('wizard',{user: req.user});
   });
 
   app.post('/wizard', require('connect-ensure-login').ensureLoggedIn(),function(request, response){
 
-    console.log(request.body.log);
-    console.log(request.body.val);
-    items.push({activity: request.body.log,value: request.body.val , category:"Carbon"})
-    totalKarma+= request.body.val
+    let number;
+    if(request.body.type === "+ve"){
+    number = request.body.val;
+    }else{
+      number = -request.body.val
+    }
+
+    items.push({activity: request.body.log,value: number, category:"Carbon"})
+    totalKarma += parseInt(number);
     response.redirect('/profile')
     
     });

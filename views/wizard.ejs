@@ -8,8 +8,11 @@
       </video>
       
     <div class="login viewport-header">
+      <% if (user.bitmoji.avatarUrl) { %>
+        <img src="<%= user.bitmoji.avatarUrl %>&scale=2" height="80" width="80" />
+        <% } %>
 
-        <h2>Set Activity</h2>
+        <h2 class="header">   Set Activity</h2>
   <form method="post" action="/wizard">
     <div class="user-box">
       <input class="text" type="text" name="log" required="" placeholder="Log what you did today">
@@ -18,6 +21,27 @@
     <div class="user-box">
       <input class="text" type="text" name="val" required="" placeholder="Enter Value">
     </div>
+
+    <div>
+      <h4 class="text1">Impact it had on environment</h4>
+      <label class="radio">
+        <span class="radio__input">
+          <input type="radio" name="type" value="+ve"/>
+          <span class="radio__control"></span>
+        </span>
+        <span class="radio__label">Positive</span>
+      </label>
+      <label class="radio">
+        <span class="radio__input">
+          <input type="radio" name="type" value="-ve" />
+          <span class="radio__control"></span>
+        </span>
+        <span class="radio__label">Negative</span>
+      </label>
+    </div>
+  
+
+    <h4 class="text2">Choose category</h4>
 
     <div>
         <label class="radio">
@@ -55,11 +79,78 @@
     </div>
    
   </form>
+
+  <div class ="reference">
+    <h4 class="refTitle"> 👋 <%= user.displayName %>! Don't know what to point? Refer to the table below..</h4>
+
+    <input id="myInput" onkeyup="myFunction()" placeholder="Search..">
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">Activity</th>
+    <th style="width:40%;">Points</th>
+  </tr>
+  <tr>
+    <td>Reduce - the forgotten stepchild of “Reduce, Reuse, Recycle”</td>
+    <td>25+</td>
+  </tr>
+  <tr>
+    <td>Carbon Emission</td>
+    <td>15+</td>
+  </tr>
+  <tr>
+    <td>Oceans & plastics</td>
+    <td>15+</td>
+  </tr>
+  <tr>
+    <td>Volunteer</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>Educate</td>
+    <td>30</td>
+  </tr>
+  <tr>
+    <td>Conserve natural resources</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Make your cleaning supplies</td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Demand government address environmental issue</td>
+    <td>100</td>
+  </tr>
+</table>
+  </div>
        </div>
     </body>
         </html>
         
 
 
-
+        <script>
+          function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+          
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }
+          </script>
 

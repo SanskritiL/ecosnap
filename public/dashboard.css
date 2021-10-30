@@ -13,28 +13,39 @@
   background: #C0F2D8;
   transition: all 0.5s ease;
 }
+.note{
+  padding-bottom: 9px;
+  color:  #1c96cb;
+}
 .sidebar.active{
   width: 60px;
 }
-.sidebar .logo-details{
+.sidebar .user-details{
   height: 80px;
   display: flex;
   align-items: center;
 }
-.sidebar .logo-details i{
+.sidebar .user-details i{
   font-size: 28px;
   font-weight: 500;
   color: black;
   min-width: 60px;
   text-align: center
 }
-.sidebar .logo-details .logo_name{
+.sidebar .user-details .username{
   color: black;
   font-size: 20px;
   font-weight: 500;
 }
 .sidebar .nav-links{
   margin-top: 10px;
+}
+.crown{
+  font-size: 30px;
+  padding-left: 20px;
+}
+.bxl-snapchat{
+  color: rgb(199, 171, 12);
 }
 .sidebar .nav-links li{
   position: relative;
@@ -346,8 +357,8 @@ nav .profile-details i{
   align-items: center;
   text-decoration: none;
 }
-.sales-boxes .top-sales li .product,
-.price{
+.sales-boxes .top-sales li .friends,
+.points{
   font-size: 17px;
   font-weight: 400;
   color: #333;
@@ -356,6 +367,12 @@ nav .profile-details i{
 .Ocean{
   padding: 1px 2px 1px 15px;
   background-color: #ffe8b3;
+  border-radius: 25px;
+  /* font-size: 12px; */
+}
+.Chemical{
+  padding: 1px 2px 1px 15px;
+  background-color: #e2a2df;
   border-radius: 25px;
   /* font-size: 12px; */
 }
